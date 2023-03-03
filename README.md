@@ -1,1 +1,1 @@
-# tictok_clone
+# tiktok_clone
