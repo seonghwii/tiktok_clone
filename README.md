@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # tictok_clone
 
 A new Flutter project.
@@ -14,3 +15,6 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+# tiktok_clone
+>>>>>>> a65fd6e7e691b3f65cd4f78c55953c92f31ab8f3
