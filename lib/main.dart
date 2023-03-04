@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tictok_clone/constants/gaps.dart';
-import 'package:tictok_clone/constants/sizes.dart';
+import 'package:tictok_clone/constants/features/authentication/sign_up_screen.dart';
 
 void main() {
   runApp(const TikTokApp());
@@ -15,18 +14,11 @@ class TikTokApp extends StatelessWidget {
     return MaterialApp(
       title: 'TikTok Clone',
       theme: ThemeData(
-        primaryColor: const Color(0xFFE9435A,), // 틱톡 original 색상 지정
-),
-      home: Padding(
-        padding: EdgeInsets.all(Sizes.size14,), // Sizes 사용법
-        child: Row(
-          children: [
-            Text('hello'),
-            Gaps.h20,
-            Text('hello'),
-          ],
-        ),
+        primaryColor: const Color(
+          0xFFE9435A,
+        ), // 틱톡 original 색상 지정
       ),
+      home: const SignUpScreen(),
     );
   }
 }
