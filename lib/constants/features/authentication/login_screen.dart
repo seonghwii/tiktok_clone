@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tictok_clone/constants/features/widgets/auth_button.dart';
 import 'package:tictok_clone/constants/gaps.dart';
 import 'package:tictok_clone/constants/sizes.dart';
 
@@ -36,6 +38,14 @@ class LoginScreen extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
+            Gaps.v40,
+            AuthButton(
+              icon: FaIcon(FontAwesomeIcons.user), // icon의 타입 : FaIcon -> AuthButton으로 가서 icon 선언;
+              text: "Use email & password"),
+            Gaps.v12,
+            AuthButton(
+              icon: FaIcon(FontAwesomeIcons.apple),
+              text: "Continue with Apple"),
           ]),
         ),
       ),
