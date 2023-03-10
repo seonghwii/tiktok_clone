@@ -8,7 +8,7 @@ import 'package:tictok_clone/constants/sizes.dart';
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
 
-  void onLoginTap(BuildContext context) {
+  void _onLoginTap(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) =>
@@ -16,6 +16,15 @@ class SignUpScreen extends StatelessWidget {
       ),
     );
   }
+
+  // void _onEmailTap(BuildContext context) {
+  //   Navigator.of(context).push(
+  //     MaterialPageRoute(
+  //       builder: (context) =>
+  //           const UsernameScreen(), // Sign up 텍스트를 클릭할 때 UsernameScreen을 보여준다.
+  //     ),
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +34,7 @@ class SignUpScreen extends StatelessWidget {
           padding: EdgeInsets.symmetric(
             horizontal: Sizes.size40,
           ),
-          child: Column(children: [
+          child: Column(mainAxisSize: MainAxisSize.min, children: [
             Gaps.v80,
             Text(
               "Sign up for TikTok",
@@ -43,19 +52,20 @@ class SignUpScreen extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            Gaps.v40,
+            Gaps.v40, // GestureDetector, onTap : _onEmailTap(context),
             AuthButton(
-              icon: FaIcon(FontAwesomeIcons.user), // icon의 타입 : FaIcon -> AuthButton으로 가서 icon 선언;
-              text: "Use email & password"),
+                icon: FaIcon(FontAwesomeIcons
+                    .user), // icon의 타입 : FaIcon -> AuthButton으로 가서 icon 선언;
+                text: "Use email & password"),
             Gaps.v12,
             AuthButton(
-              icon: FaIcon(FontAwesomeIcons.apple),
-              text: "Continue with Apple"),
+                icon: FaIcon(FontAwesomeIcons.apple),
+                text: "Continue with Apple"),
           ]),
         ),
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.grey.shade100,
+        color: Colors.grey.shade50,
         elevation: 2,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: Sizes.size32),
@@ -67,7 +77,7 @@ class SignUpScreen extends StatelessWidget {
               ),
               Gaps.h5,
               GestureDetector(
-                onTap: () => onLoginTap(context),
+                onTap: () => _onLoginTap(context),
                 child: Text(
                   "Log in",
                   style: TextStyle(
