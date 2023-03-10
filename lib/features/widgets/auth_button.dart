@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tictok_clone/constants/features/authentication/username_screen.dart';
+import 'package:tictok_clone/features/authentication/username_screen.dart';
 import 'package:tictok_clone/constants/sizes.dart';
 
 class AuthButton extends StatelessWidget {
@@ -27,6 +27,7 @@ class AuthButton extends StatelessWidget {
     return GestureDetector(
       onTap: () => _onEmailTap(context),
       child: FractionallySizedBox(
+        // 오버랩되는 기능
         widthFactor: 1,
         child: Container(
           padding: const EdgeInsets.all(

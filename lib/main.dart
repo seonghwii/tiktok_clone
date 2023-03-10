@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tictok_clone/constants/features/authentication/sign_up_screen.dart';
+import 'package:tictok_clone/features/authentication/sign_up_screen.dart';
 import 'package:tictok_clone/constants/sizes.dart';
 
 void main() {
