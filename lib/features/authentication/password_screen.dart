@@ -50,6 +50,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
   }
 
   bool _isLettersValid() {
+    // 유효성 검사 메소드
     final regExp = RegExp(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]");
     return _password.isNotEmpty && regExp.hasMatch(_password);
   }
@@ -196,7 +197,8 @@ class _PasswordScreenState extends State<PasswordScreen> {
               GestureDetector(
                 onTap: _onSubmit,
                 child: FormButton(
-                    disabled: !_isPasswordValid() && !_isLettersValid()),
+                    disabled: !_isPasswordValid() &&
+                        !_isLettersValid()), // 두 가지 유효성 검사를 만족해야지만 Next 버튼 작동
               ),
             ],
           ),
