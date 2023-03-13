@@ -20,7 +20,7 @@ class _UsernameScreenState extends State<BirthdayScreen> {
   @override
   void initState() {
     super.initState();
-    _setTextFieldDate(initialDate);
+    // _setTextFieldDate(initialDate);
   }
 
   @override
@@ -105,8 +105,9 @@ class _UsernameScreenState extends State<BirthdayScreen> {
         child: SizedBox(
           height: 300,
           child: CupertinoDatePicker(
-            initialDateTime: initialDate, // 초기 날짜 설정
-            maximumDate: initialDate, // 최대 날짜 설정
+            maximumDate: initialDate, // 초기 날짜 설정
+            initialDateTime: initialDate
+                .subtract(const Duration(days: 365 * 12)), // 최대 날짜 설정
             mode: CupertinoDatePickerMode.date, // 포맷 변경
             onDateTimeChanged: _setTextFieldDate,
           ),
