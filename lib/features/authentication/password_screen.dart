@@ -93,7 +93,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
             children: [
               Gaps.v40,
               const Text(
-                "Password",
+                "Create Password",
                 style: TextStyle(
                   fontSize: Sizes.size24,
                   fontWeight: FontWeight.w700,
@@ -197,8 +197,9 @@ class _PasswordScreenState extends State<PasswordScreen> {
               GestureDetector(
                 onTap: _onSubmit,
                 child: FormButton(
-                    disabled: !_isPasswordValid() &&
-                        !_isLettersValid()), // 두 가지 유효성 검사를 만족해야지만 Next 버튼 작동
+                  disabled: !_isPasswordValid() && !_isLettersValid(),
+                  name: 'Next',
+                ), // 두 가지 유효성 검사를 만족해야지만 Next 버튼 작동
               ),
             ],
           ),

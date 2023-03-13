@@ -96,7 +96,10 @@ class _UsernameScreenState extends State<BirthdayScreen> {
             Gaps.v16,
             GestureDetector(
               onTap: _onNextTap,
-              child: const FormButton(disabled: false), // false로 설정하면 항상 활성화된다.
+              child: const FormButton(
+                disabled: false,
+                name: 'Next',
+              ), // false로 설정하면 항상 활성화된다.
             ),
           ],
         ),

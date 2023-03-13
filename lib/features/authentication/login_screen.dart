@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tictok_clone/features/authentication/login_form_screen.dart';
 import 'package:tictok_clone/features/widgets/auth_button.dart';
 import 'package:tictok_clone/constants/gaps.dart';
 import 'package:tictok_clone/constants/sizes.dart';
@@ -11,17 +12,25 @@ class LoginScreen extends StatelessWidget {
     Navigator.of(context).pop();
   }
 
+  void _onEmailLoginTap(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const LoginFormScreen(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const SafeArea(
+      body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
             horizontal: Sizes.size40,
           ),
           child: Column(children: [
             Gaps.v80,
-            Text(
+            const Text(
               "Log for TikTok",
               style: TextStyle(
                 fontSize: Sizes.size24,
@@ -29,7 +38,7 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
             Gaps.v20,
-            Text(
+            const Text(
               "Manage your account, check notifications, comment on videos, and more.",
               style: TextStyle(
                 fontSize: Sizes.size16,
@@ -38,12 +47,15 @@ class LoginScreen extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             Gaps.v40,
-            AuthButton(
-                icon: FaIcon(FontAwesomeIcons
-                    .user), // icon의 타입 : FaIcon -> AuthButton으로 가서 icon 선언;
-                text: "Use email & password"),
+            GestureDetector(
+              onTap: () => _onEmailLoginTap(context),
+              child: const AuthButton(
+                  icon: FaIcon(FontAwesomeIcons
+                      .user), // icon의 타입 : FaIcon -> AuthButton으로 가서 icon 선언;
+                  text: "Use email & password"),
+            ),
             Gaps.v12,
-            AuthButton(
+            const AuthButton(
                 icon: FaIcon(FontAwesomeIcons.apple),
                 text: "Continue with Apple"),
           ]),
