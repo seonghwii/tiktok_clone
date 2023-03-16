@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tictok_clone/constants/sizes.dart';
 
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});
@@ -12,24 +11,6 @@ class MainNavigationScreen extends StatefulWidget {
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
   int _selectedIndex = 0;
 
-  final screens = [
-    const Center(
-      child: Text('Home'),
-    ),
-    const Center(
-      child: Text('Search'),
-    ),
-    const Center(
-      child: Text('Calendar'),
-    ),
-    // const Center(
-    //   child: Text('Camera'),
-    // ),
-    // const Center(
-    //   child: Text('Rotate'),
-    // ),
-  ];
-
   void _onTap(int index) {
     setState(() {
       _selectedIndex = index;
@@ -39,47 +20,27 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        selectedLabelStyle: const TextStyle(
-            fontSize: Sizes.size20,
-            fontWeight: FontWeight.bold,
-            fontFamily: 'NotoSans'),
-        type: BottomNavigationBarType.shifting,
-        currentIndex: _selectedIndex,
-        onTap: _onTap,
-        // selectedItemColor: Theme.of(context).primaryColor,
-        items: const [
-          BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.house),
-            label: "Home",
-            tooltip: "What are you?",
-            backgroundColor: Colors.pink,
+      bottomNavigationBar: NavigationBar(
+        backgroundColor: Colors.lightGreen.shade100,
+        labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
+        indicatorColor: Colors.lightGreen.shade300,
+        selectedIndex: _selectedIndex,
+        onDestinationSelected: _onTap,
+        destinations: [
+          NavigationDestination(
+            icon: FaIcon(
+              FontAwesomeIcons.house,
+              color: _selectedIndex == 0 ? Colors.teal.shade800 : Colors.teal,
+            ),
+            label: 'Home',
           ),
-          BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.magnifyingGlass),
-            label: "Search",
-            tooltip: "What are you?",
-            backgroundColor: Colors.blue,
+          NavigationDestination(
+            icon: FaIcon(
+              FontAwesomeIcons.magnifyingGlass,
+              color: _selectedIndex == 1 ? Colors.teal.shade800 : Colors.teal,
+            ),
+            label: 'Search',
           ),
-          BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.solidCalendar),
-            label: "Calendar",
-            tooltip: "What are you?",
-            backgroundColor: Colors.teal,
-          ),
-          // BottomNavigationBarItem(
-          //   icon: FaIcon(FontAwesomeIcons.camera),
-          //   label: "Camera",
-          //   tooltip: "What are you?",
-          //   backgroundColor: Colors.amber,
-          // ),
-          // BottomNavigationBarItem(
-          //   icon: FaIcon(FontAwesomeIcons.rotate),
-          //   label: "Rotate",
-          //   tooltip: "What are you?",
-          //   backgroundColor: Colors.red,
-          // ),
         ],
       ),
     );
