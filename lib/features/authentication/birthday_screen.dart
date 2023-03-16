@@ -31,11 +31,12 @@ class _UsernameScreenState extends State<BirthdayScreen> {
   }
 
   void _onNextTap() {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const InterestsScreen(),
-      ),
-    );
+    Navigator.of(context).pushAndRemoveUntil(
+        // false : 위젯 삭제 , true : 해당 route 유지
+        MaterialPageRoute(
+          builder: (context) => const InterestsScreen(),
+        ),
+        (route) => false);
   }
 
   void _setTextFieldDate(DateTime date) {

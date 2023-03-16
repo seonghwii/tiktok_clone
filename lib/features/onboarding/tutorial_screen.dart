@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:tictok_clone/constants/gaps.dart';
 import 'package:tictok_clone/constants/sizes.dart';
 
+import '../main_navigation/main_navigation_screen.dart';
+
 enum Direction { right, left }
 
 enum Page { first, second }
@@ -58,6 +60,15 @@ class _TutorialScreenState extends State<TutorialScreen> {
     }
   }
 
+  void _onEnterAppTap() {
+    Navigator.of(context).pushAndRemoveUntil(
+        // false : 위젯 삭제 , true : 해당 route 유지
+        MaterialPageRoute(
+          builder: (context) => const MainNavigationScreen(),
+        ),
+        (route) => false);
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -90,9 +101,9 @@ class _TutorialScreenState extends State<TutorialScreen> {
                 vertical: Sizes.size24, horizontal: Sizes.size24),
             child: AnimatedOpacity(
               duration: const Duration(milliseconds: 300),
-              opacity: _showingPage == Page.first ? 0 : 1, // 첫번째 페이지에서는 버튼 숨김
+              opacity: _showingPage == Page.first ? 0 : 1, // 첫번째 페이지에서는 버튼 숨김.
               child: CupertinoButton(
-                onPressed: () {},
+                onPressed: _onEnterAppTap,
                 color: Theme.of(context).primaryColor,
                 child: const Text('Enter the app!'),
               ),
