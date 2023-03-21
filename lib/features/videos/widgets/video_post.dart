@@ -30,8 +30,8 @@ class _VideoPostState extends State<VideoPost>
   late final AnimationController _animationController;
 
   bool _isPaused = false;
-  bool _isSeeMoreClicked = false;
-  int _maxLines = 1;
+  bool _isSeeMoreClicked = false; // 글자 클릭 여부
+  int _maxLines = 1; // 최대로 보일 텍스트 라인 수
 
   void _onVideoChange() {
     if (_videoPlayerController.value.isInitialized) {
@@ -92,10 +92,11 @@ class _VideoPostState extends State<VideoPost>
   }
 
   void _onSeeMoreTap() {
+    // 글자 클릭 시 실행할 함수
     if (_isSeeMoreClicked == true) {
-      _maxLines = 3;
+      _maxLines = 3; // 클릭 시(_isSeeMoreClicked가 true일 경우), 글자 내용을 최대 3줄 보여준다.
     } else {
-      _maxLines = 1;
+      _maxLines = 1; // 아니면 한 줄만 보여준다.
     }
     setState(() {
       _isSeeMoreClicked = !_isSeeMoreClicked;
@@ -162,21 +163,30 @@ class _VideoPostState extends State<VideoPost>
                 ),
                 Gaps.v10,
                 Row(
+                  // 보여줄 내용과 클릭할 텍스트가 함께 있어야 하기 때문에 Row로 감싸준다.
                   children: [
                     SizedBox(
                       width: 250,
                       child: Text(
+                        // 보여줄 내용
                         "This is my desktop!!! This is my desktop!!! This is my desktop!!! This is my desktop!!! This is my desktop!!!",
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 16,
                         ),
-                        overflow: TextOverflow.ellipsis,
+                        overflow: TextOverflow
+                            .ellipsis, // 텍스트가 많아 overflow될 때 ...으로 표시
                         maxLines: _maxLines,
                       ),
                     ),
-                    GestureDetector(
-                      onTap: _onSeeMoreTap,
+                    TextButton(
+                      // TextButton도 가능하다!!
+                      onPressed:
+                          _onSeeMoreTap, // 텍스트 클릭 여부에 따라 보여줄 텍스트 라인 수 변경 메소드
+                      style: ButtonStyle(
+                        overlayColor: MaterialStateProperty.all(
+                            Colors.black12), // 버튼 클릭 시 애니메이션이 퍼져나가는 색상 변경 속성
+                      ),
                       child: const Text(
                         "See More",
                         style: TextStyle(
