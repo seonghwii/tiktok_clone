@@ -42,7 +42,7 @@ class _VideoTimeLineScreenState extends State<VideoTimeLineScreen> {
   }
 
   Future<void> _onRefresh() {
-    return Future.delayed(const Duration(seconds: 5));
+    return Future.delayed(const Duration(milliseconds: 500));
   }
 
   @override
