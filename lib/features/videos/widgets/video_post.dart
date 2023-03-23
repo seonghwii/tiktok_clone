@@ -79,6 +79,10 @@ class _VideoPostState extends State<VideoPost>
         !_videoPlayerController.value.isPlaying) {
       _videoPlayerController.play();
     }
+    if (_videoPlayerController.value.isPlaying && info.visibleFraction == 0) {
+      // 영상이 재생되고 있음 & 화면에 영상이 보이지 않을 때
+      _onTogglePause(); // 영상 일시정지
+    }
   }
 
   void _onTogglePause() {
