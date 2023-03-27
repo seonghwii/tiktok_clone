@@ -19,6 +19,11 @@ class TikTokApp extends StatelessWidget {
         primaryColor: const Color(
           0xFFE9435A,
         ), // 틱톡 original 색상 지정
+        textSelectionTheme: const TextSelectionThemeData(
+          cursorColor: Color(
+            0xFFE9435A,
+          ),
+        ),
         appBarTheme: const AppBarTheme(
           // email_screen.dart 파일에서 가져옴.
           foregroundColor: Colors.black, // appBar의 글자 색상
