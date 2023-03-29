@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tictok_clone/constants/gaps.dart';
@@ -25,18 +24,44 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
   final TextEditingController _textEditingController =
       TextEditingController(text: "Initial Text");
 
+  // bool _isWriting = true;
+
   void _onSearchChanged(String value) {
     print("SearchChanged : $value");
   }
 
   void _onSearchSubmitted(String value) {
-    print("SearchSubmitted :  $value");
+    _textEditingController.text = value;
+    setState(() {});
+  }
+
+  // void _stopWriting() {
+  //   FocusScope.of(context).unfocus();
+  //   setState(() {
+  //     _isWriting = false;
+  //   });
+  // }
+
+  // void _onTap() {
+  //   setState(() {
+  //     _isWriting = true;
+  //   });
+  // }
+
+  @override
+  void initState() {
+    super.initState();
+    _textEditingController.value;
   }
 
   @override
   void dispose() {
     _textEditingController.dispose();
     super.dispose();
+  }
+
+  void _onClosePressed() {
+    _textEditingController.clear();
   }
 
   @override
@@ -47,10 +72,32 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
           elevation: 1,
-          title: CupertinoSearchTextField(
-            controller: _textEditingController,
-            onChanged: _onSearchChanged,
-            onSubmitted: _onSearchSubmitted,
+          actions: [
+            IconButton(
+              onPressed: _onClosePressed,
+              icon: const FaIcon(FontAwesomeIcons.xmark),
+            ),
+          ],
+          title: Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(top: Sizes.size8),
+              child: TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(Sizes.size12),
+                    borderSide: BorderSide.none,
+                  ),
+                  filled: true,
+                  fillColor: Colors.grey.shade200,
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: Sizes.size8,
+                  ),
+                  suffixIcon: const FaIcon(
+                    FontAwesomeIcons.ccDiscover,
+                  ),
+                ),
+              ),
+            ),
           ),
           bottom: TabBar(
             splashFactory: NoSplash.splashFactory, // 기본 적용된 애니메이션 효과 삭제
