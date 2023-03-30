@@ -41,12 +41,6 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
     });
   }
 
-  void _onStartWriting() {
-    setState(() {
-      _isWriting = true;
-    });
-  }
-
   @override
   void initState() {
     super.initState();
@@ -147,8 +141,6 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
           child: TabBarView(
             children: [
               GridView.builder(
-                keyboardDismissBehavior:
-                    ScrollViewKeyboardDismissBehavior.onDrag,
                 padding: const EdgeInsets.all(
                   Sizes.size6,
                 ),
