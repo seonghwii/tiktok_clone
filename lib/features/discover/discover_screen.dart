@@ -171,7 +171,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                     ),
                     Gaps.v10,
                     const Text(
-                      "This is a very long caption for my tiktok taht im upload just now currently.",
+                      "This is a very long caption for my tiktok that im upload just now currently.",
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
