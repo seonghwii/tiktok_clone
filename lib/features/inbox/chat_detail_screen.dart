@@ -36,11 +36,27 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
           title: ListTile(
             contentPadding: EdgeInsets.zero,
             horizontalTitleGap: Sizes.size8,
-            leading: const CircleAvatar(
-              // 코드챌린지
-              radius: Sizes.size24,
-              backgroundImage: NetworkImage(
-                  "https://img.freepik.com/free-photo/adorable-kitty-looking-like-it-want-to-hunt_23-2149167099.jpg?w=2000"),
+            leading: const Stack(
+              children: [
+                CircleAvatar(
+                  // 코드챌린지
+                  radius: Sizes.size24,
+                  backgroundImage: NetworkImage(
+                      "https://img.freepik.com/free-photo/adorable-kitty-looking-like-it-want-to-hunt_23-2149167099.jpg?w=2000"),
+                ),
+                Positioned(
+                  left: 29,
+                  top: Sizes.size32,
+                  child: CircleAvatar(
+                    radius: Sizes.size10,
+                    backgroundColor: Colors.white,
+                    child: CircleAvatar(
+                      radius: Sizes.size7,
+                      backgroundColor: Colors.green,
+                    ),
+                  ),
+                )
+              ],
             ),
             title: const Text(
               "xxxxmmm967",
