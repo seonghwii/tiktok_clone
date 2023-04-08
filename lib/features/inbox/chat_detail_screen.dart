@@ -11,8 +11,7 @@ class ChatDetailScreen extends StatefulWidget {
 }
 
 class _ChatDetailScreenState extends State<ChatDetailScreen> {
-  // bool _isTouched = false;
-  // final TextEditingController _textEditingController = TextEditingController();
+  final TextEditingController _textEditingController = TextEditingController();
 
   String text = "";
 
@@ -21,11 +20,17 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
     setState(() {});
   }
 
-  // void _isWriting() {
-  //   setState(() {
-  //     _isTouched = true;
-  //   });
-  // }
+  void _onSearchSubmitted(String value) {
+    setState(() {
+      _textEditingController.text = value;
+    });
+  }
+
+  @override
+  void dispose() {
+    _textEditingController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +44,6 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
             leading: const Stack(
               children: [
                 CircleAvatar(
-                  // 코드챌린지
                   radius: Sizes.size24,
                   backgroundImage: NetworkImage(
                       "https://img.freepik.com/free-photo/adorable-kitty-looking-like-it-want-to-hunt_23-2149167099.jpg?w=2000"),
@@ -141,13 +145,15 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                   color: Colors.grey.shade200,
                   child: Row(
                     children: [
-                      const Expanded(
+                      Expanded(
                         child: Padding(
-                          padding: EdgeInsets.all(
+                          padding: const EdgeInsets.all(
                             Sizes.size6,
                           ),
                           child: TextField(
-                            decoration: InputDecoration(
+                            controller: _textEditingController,
+                            onSubmitted: _onSearchSubmitted,
+                            decoration: const InputDecoration(
                               filled: true,
                               contentPadding: EdgeInsets.symmetric(
                                 vertical: Sizes.size10,
