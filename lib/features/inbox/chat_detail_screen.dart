@@ -41,8 +41,8 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
           title: ListTile(
             contentPadding: EdgeInsets.zero,
             horizontalTitleGap: Sizes.size8,
-            leading: const Stack(
-              children: [
+            leading: Stack(
+              children: const [
                 CircleAvatar(
                   radius: Sizes.size24,
                   backgroundImage: NetworkImage(
@@ -76,9 +76,9 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                 fontSize: Sizes.size12,
               ),
             ),
-            trailing: const Row(
+            trailing: Row(
               mainAxisSize: MainAxisSize.min,
-              children: [
+              children: const [
                 FaIcon(
                   FontAwesomeIcons.flag,
                   color: Colors.black,
