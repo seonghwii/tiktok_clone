@@ -59,6 +59,7 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                   },
                 ),
                 Gaps.v16,
+                // 비밀번호 숨김 처리
                 TextFormField(
                   decoration: const InputDecoration(
                     hintText: "Password",
@@ -71,6 +72,7 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                       formData['password'] = newValue;
                     }
                   },
+                  obscureText: true,
                 ),
                 Gaps.v28,
                 GestureDetector(

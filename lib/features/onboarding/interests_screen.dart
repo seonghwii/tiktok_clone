@@ -6,6 +6,8 @@ import 'package:tictok_clone/constants/sizes.dart';
 import 'package:tictok_clone/features/onboarding/tutorial_screen.dart';
 import 'package:tictok_clone/features/onboarding/widgets/interest_button.dart';
 
+import '../main_navigation/main_navigation_screen.dart';
+
 const interests = [
   "Daily Life",
   "Comedy",
@@ -133,16 +135,41 @@ class _InterestsScreenState extends State<InterestsScreen> {
     super.dispose();
   }
 
+  // Skip 텍스트 클릭 시 MainNavigation 화면으로 이동
+  void _onClickSkip() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const MainNavigationScreen(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: AnimatedOpacity(
-          opacity: _showTitle ? 1 : 0,
-          duration: const Duration(milliseconds: 300),
-          child: const Text(
-            "Choose your interests",
-          ),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            AnimatedOpacity(
+              opacity: _showTitle ? 1 : 0,
+              duration: const Duration(milliseconds: 300),
+              child: const Text(
+                "Choose your interests",
+              ),
+            ),
+            TextButton(
+              onPressed: _onClickSkip,
+              child: const Text(
+                "Skip",
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
       body: Scrollbar(
